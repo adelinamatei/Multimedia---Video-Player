@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <!--Acordam un titlu paginii noastre-->
+    <title>Player Video</title>
+    <script src="https://kit.fontawesome.com/2dfd70f29d.js" crossorigin="anonymous"></script>
+    <!--Creare legatura cu fisierul .css-->
+    <link rel="stylesheet" href="styles.css">
+    <!--Inserare stil font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!--Inserare stil font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Inserare stil font-->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&display=swap" rel="stylesheet">
+
+<body>
+    <h1>Player Video</h1>
+
+    <!--Partea cu video-ul principal-->
+    <main class="principal">
+        <!--Video actual - cel care este afisat -->
+        <article class="actual arata_controalere">
+            <video id="video_principal" src=""> <!--declaram video-->
+            </video>
+            <h2 id="titlu_principal"></h2> <!--ii stabilim un titlu-->
+            <div class="controalere"> <!--ii facem controalere-->
+                <div class="linia_de_timp"><!--zona pentru progress bar-->
+                    <div class="zona_de_progres">
+                        <div class="bara_de_progres"></div>
+                    </div>
+                </div>
+                <ul class="controalere_video"><!--stabilim controalere la video-->
+                    <li class="options left"><!--pentru optiunile din partea stanga-->
+                        <button class="sunet"><!--stabilim butonul de sunet -->
+                            <i class="fa-solid fa-volume-high"></i><!--icon pentru acesta--></button>
+                        <input type="range" max="1" step="any" min="0"><!--stabilim range-ul pentru audio-->
+                        <div class="timer_video"><!--timpul video-ului-->
+                            <p class="timp_curent">00:00</p><!--timpul curent pentru modent sa fie 00:00-->
+                            <p class="sep">/</p><!--separatorul dintre timpul actual si durata intregului video-->
+                            <p class="durata_video">00:00</p><!--durata intregului video-->
+                        </div>
+                    </li>
+                    <li class="options center"><!--optiunile din centru-->
+                        <button class="skip_inapoi"><!--buton de skip inapoi-->
+                            <i class="fa-solid fa-backward-step"></i><!--icon pentru el--></button>
+                        <button class="play_pauza"><!--zona pentru butonul de play si pauza--><i
+                                class="fas fa-play"></i>
+                        </button>
+                        <button class="skip_inainte"><!--buton de skip inainte la video-ul urmator-->
+                            <i class="fa-solid fa-forward-step"></i>
+                        </button>
+                    </li>
+                    <li class="options right"><!--zona cu optiunile din dreapta video-ului-->
+                        <div class="viteza_de_redare_continut"><!--zona pentru redare-->
+                            <button class="viteza_redare"><!--viteza de redare--><i class="fa-solid fa-circle-play"></i>
+                                <!--icon pentru el-->
+                            </button>
+                            <ul class="alegeri_de_viteza"><!--de aici de alege viteza de redare a video-ului-->
+                                <li>x0.5</li><!--viteza de 0,5-->
+                                <li>x0.75</li><!--viteza de 0.75-->
+                                <li class="activvve">Normal</li><!--viteza normala, default-->
+                                <li>x1.5</li><!--viteza de 1,5-->
+                                <li>x2</li><!--viteza de x2-->
+                            </ul>
+                        </div>
+                        <button class="pe_tot_ecranul"><!--zona pentru buton pentru fullscreen-->
+                            <i class="fa-solid fa-expand"></i><!--si iconul pentru el-->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </article>
+        <!--Partea cu lista de video-uri din partea dreapta a video-ului principal-->
+        <article class="toate">
+        </article>
+        <button class="buton_de_stergere_video"><!--zona pentru buton pentru fullscreen-->
+            Stergere video
+        </button>
+    </main>
+    <!--Cream legatura cu fisierul JavaScript-->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+* {/*pentru toata pagina*/
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+/*pentru body*/
+body {
+   /*plasare obiecte in centru*/ place-items: center;
+   /*mod afisaj*/ display: grid;
+    /*stil font*/font-family: 'Marcellus SC', serif;
+    min-height: 100vh;
+    /*culoare de fundal cu gradient*/background-image: linear-gradient(to right, #70B9FB, #8DB7FF, #7EDFFF);
+    color: #E6F4FD;/*culoare*/
+    overflow-x: hidden;
+    /*aliniere obiecte*/align-items: center;
+    justify-content: center;
+}
+
+
+.principal { /*pentru partea cu video-ul principal*/
+    grid-template-columns: 1fr 0.5fr;
+    gap: 15px;
+    width: 90vw;/*dimensiune*/
+    align-items: flex-start;/*aliniere obiecte*/
+    display: grid;/*afisaj*/
+}
+
+.actual {/*pentru lista */
+    border-radius: 5px;
+    color: blue;
+    overflow: hidden;
+    max-width: 900px;/*dimensiune maxima*/
+    width: 98%;/*dimensiune*/
+    position: relative;/*pozitie*/
+}
+
+.actual video {/*pentru lista cu video actual*/
+    border-radius: 5px;
+    width: 100%;
+}
+
+.actual h2 {/*pentru text-ul (titlurile video-urilor)*/
+    font-weight: 600;
+    color: #b543fd;
+    font-size: 1.2rem;
+}
+
+.toate {/*pentru zona cu toate video-uri*/
+    border-bottom-left-radius: 5px;
+    display: flex;
+    background-color: #E6F4FD;
+    flex-direction: column;
+    padding: 10px;
+    height: 500px;
+    overflow-x: hidden;
+    border-top-left-radius: 5px;
+    overflow-y: auto;
+}
+/*pentru bara de scroll din dreapta*/
+.toate::-webkit-scrollbar {
+    background-color: beige;
+    width: 4px;
+}
+/*pentru bara de scroll din dreapta*/
+.toate::-webkit-scrollbar-thumb {
+    background-color: darkorchid;
+}
+/*cand selectam un singur video*/
+.unul_singur {
+    gap: 10px;
+    align-items: center;/*aliniere obiecte*/
+    border-radius: 2px;
+    background-color: #A9D5F8;
+    padding: 10px;/*pentru padding*/
+    display: flex;/*afisaj*/
+    cursor: pointer;/*tip cursor*/
+   /*tranzitie*/transition: 200ms ease-in-out;
+
+}
+/*pentru partea de media*/
+@media(max-width:800px) {
+    .prima_clasa {
+        grid-template-columns: 1fr;
+    }
+}
+/*cand selectam un singur video*/
+.unul_singur video {
+    border-radius: 10px;
+    height: 75px;/*dimensiune*/
+}
+/*pentru titlul unui singur video*/
+.unul_singur h3 {
+    font-weight: 600;/*dimensiune font*/
+    font-size: 14px;/*dimensiune font*/
+}
+
+.unul_singur.active, /*cand dam click pe un video din*/
+.unul_singur:hover {/*lista*/
+  /*culoare*/color: white;
+   /*culoare fundal cu gradient*/background-image: linear-gradient(to right, #70B9FB, #8DB7FF, #7EDFFF);
+}
+
+
+.incarca {/*pentru incarcare*/
+    user-select: none;/*fara selectare*/
+    display: flex;/*afisaj*/
+    background-color: violet;/*culoare fundal*/
+    flex-direction: column;
+    min-width: 500px;/*dimensiune minima*/
+    border-radius: 8px;/*diimensiune bordura*/
+    position: relative;/*pozitie relativa*/
+    text-align: center;/*aliniere text in centru*/
+
+}
+
+#arataVideo_uriIncarcate {/*aspectul pentru lista dupa ce*/
+    width: 360px;/*video-urile au fost incarcare*/
+    height: 200px;/*dimensiune*/
+    background-size: cover;
+    background-position: center;/*pozitie fundal pe centru*/
+    flex-direction: column;
+    border: 2px solid purple;/*stil bordura*/
+}
+
+
+.controalere {/*aspectul total al controalerelor*/
+    position: absolute;/*pozitie absoluta*/
+    left: 0;/*stanga*/
+    right: 0;/*dreapta*/
+    bottom: 0;
+    bottom: -15px;
+    opacity: 0;/*opacitate 0*/
+    pointer-events: none;/*fara evenimente*/
+    /*tranzitie*/transition: all 0.8s ease;
+}
+
+.actual.arata_controalere .controalere {/*tot pentru controalerele*/
+    bottom: 0px;
+   /*opacitate de 1*/ opacity: 1;
+    pointer-events: auto;
+    /*tranzitie*/transition: all 0.13s ease;
+}
+
+.controalere::before {/*inainte*/
+    /*pozitie absoluta*/position: absolute;
+    content: "";
+    /*culoare fundal cu gradient*/background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    width: 100%;
+    /*z -index*/z-index: -1;
+    height: 100%;
+    bottom: 25px;
+}
+
+.body,
+.controalere_video,
+.timer_video,
+.options {/*pentru body, controalerele, timer si optiuni*/
+    justify-content: center;
+   /*aliniere obiecte pe centru*/ align-items: center;
+    /*afisaj flex*/display: flex;
+}
+
+.options,/*doar pentru optiuni*/
+.controalere_video { /*si controalere*/
+    /*dimensiune*/width: 100%;
+}
+
+
+.controalere_video {/*doar pentru controalere*/
+  /*pentru padding*/  padding: 5px 20px 30px;
+}
+
+.actual.pe_tot_ecranul {/*pentru fullscreen*/
+   /*dimenziune maxima*/ max-width: 100%;
+    /*dimensiune*/width: 100%;
+   /*modificare cursor cand dam cu mouse-ul*/ cursor: pointer;
+}
+
+.options button { /*pentru optiuni*/
+     /*dimensiune*/width: 40px;
+    /*fara bordura*/ border: none;
+     /*dimensiune*/height: 40px;
+    color: white; /*culoare*/
+     /*fara fundal*/background: none;
+   /*dimensiune font*/ font-size: 20px;
+    /*modificare cursor cand dam cu mouse-ul*/cursor: pointer;
+}
+
+.options button :where(i, span) { /*optiuni cand alegem*/
+    width: 100%;/*dimensiune*/
+    height: 100%;/*dimensiune*/
+   /*dimensiune linie*/ line-height: 40px;
+}
+
+.controalere_video .options:last-child {/*pentru ultimul buton*/
+    justify-content: flex-end;
+}
+
+.controalere_video .options:first-child {/*pentru primul buton*/
+    justify-content: flex-start;
+}
+
+.options input {/*pentru optiuni*/
+    height: 4px;
+    max-width: 75px;
+}
+
+.options .timer_video {/*pentru partea de timp*/
+    /*dimensiune font*/font-size: 14px;
+    color: #E6F4FD;/*culoare*/
+    margin-left: 15px;/*marginile din stanga*/
+}
+
+.timer_video .sep {/*pentru separatorul "/" pentru timp */
+    font-size: 16px;/*font-ul*/
+    margin: 0 5px;/*si marginile*/
+}
+
+.linia_de_timp {
+    height: 7px;/*dimensiune*/
+    cursor: pointer;/*cand dam cu mouse-ul, cursorul se face pointer*/
+}
+
+.linia_de_timp .zona_de_progres {
+   /*dimensiune*/ height: 3px;
+    /*pozitie*/position: relative;
+    /*culoare de fundal*/background: rgba(255, 255, 255, 0.6);
+}
+
+.zona_de_progres .bara_de_progres {
+    background: red;/*culoare fundal*/
+    width: 50%;/*dimensiune*/
+    height: 100%;/*dimensiune*/
+    position: relative;/*pozitie*/
+}
+
+.zona_de_progres .bara_de_progres::before {/*bara initiala de progres*/
+    content: "";
+   /*pozitie absoluta*/ position: absolute;
+   /*dimensiune*/ height: 13px;
+    width: 13px;/*dimensiune*/
+    background: inherit;/*mosteneste culoarea de fundal*/
+    position: absolute;/*pozitie absoluta*/
+    /*sus*/top: 50%;
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+.zona_de_progres span,
+.zona_de_progres .bara_de_progres::before {
+   /*fara afisaj*/  display: none;
+}
+
+.linia_de_timp:hover .zona_de_progres span,
+.linia_de_timp:hover .zona_de_progres .bara_de_progres::before {
+    display: block; /*afisaj block*/
+}
+
+/*zona de progres*/
+.zona_de_progres span {
+    /*pozitie absoluta*/position: absolute;
+    /*stanga*/left: 50%;
+    /*sus*/top: -25%;
+    color: white;/*culoare*/
+    transform: translateX(-50%);/*pentru translatare*/
+    /*dimensiune font*/font-size: 14px;
+}
+/*pentru viteza de redare*/
+.viteza_de_redare_continut {
+    position: relative;/*pozitie relativa*/
+}
+
+.viteza_de_redare_continut .alegeri_de_viteza{/*pentru viteza de redare*/
+    /*pozitie absoluta*/position: absolute;
+    bottom: 40px;
+    left: -40px;/*stanga*/
+    width: 95px;/*dimensiune*/
+    opacity: 0;/*fara opacitate*/
+    pointer-events: none;/*fara evenimente*/
+    list-style: none;
+    background: white;/*culoare de fundal*/
+    border-radius: 4px;/*dimensiune bordura*/
+    /*tranzitie*/
+    transition: opacity 0.13s ease;
+}
+
+.viteza_de_redare_continut button:hover ~ .alegeri_de_viteza 
+{/*pentru viteza de redare si alegere viteza de redare*/
+    opacity: 1;/*opacitate*/
+    pointer-events: auto;
+}
+
+.buton_de_stergere_video{
+    color: #c205db;/*culoare*/
+    background-color: white;/*culoare fundal*/
+    font-size: 14px;/*dimensiune font*/
+    border-color: #c205db;/*culoare bordura*/
+    width: 100px;/*dimensiune*/
+}
+
+.alegeri_de_viteza li {/*alege viteza de redare la video*/
+    /*dimensiune font*/ font-size: 14px;
+    padding: 5px 0 5px 15px; /*pentru padding*/
+    /*modificare stil cursor cand dam cu mouse*/cursor: pointer;
+}
+
+.alegeri_de_viteza li.activvve {/*pentru partea de "Normal"*/
+    background: plum; /*culoare fundal*/
+    color: white; /*culoare*/
+}
+
